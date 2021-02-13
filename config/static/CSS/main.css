@@ -1,0 +1,10 @@
+.bg_img {
+    background-image: url("../Image/background-5.jpg");
+    background-repeat: no-repeat;
+    background-position: 30% 50%;
+}
+
+img {
+    height: 400px;
+    object-fit: contain;
+}

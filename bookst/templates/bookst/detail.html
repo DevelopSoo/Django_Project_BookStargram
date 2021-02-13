@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 mb-3 d-flex flex-column align-items-center">
+    <h1 class="fw-bold mb-5">Book Stargram</h1>
+    <div class="card mb-3 ps-5 pe-5" style="max-width: 50rem;">
+      {% if post.image %}
+         <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+        <h3 class="card-title">{{ post.title }}</h3>
+        <p class="card-text">{{ post.content }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            {% if request.user == post.author %}
+            <div class="btn-group">
+               <a href="{% url 'bookst:edit' post.pk %}" type="button" class="btn btn-sm btn-outline-info">Edit</a>
+               <a href="#" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">삭제 확인</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    정말로 삭제하시겠습니까?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <form action="{% url 'bookst:delete' post.pk %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="삭제하기" class="btn btn-outline-secondary">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end Modal -->
+            {% else %}
+            <div class="btn-group">
+               <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Edit</button>
+               <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Delete</button>
+            </div>
+            {% endif %}
+
+            <div class="d-flex flex-column">
+              <small class="text-muted">{{ post.created_at }}</small>
+              <small class="text-muted">글쓴이: {{ post.author }}</small>
+              <small class="text-muted">조회 수: {{ post.view_count }}</small>
+            </div>
+        </div>
+
+
+      </div>
+    </div>
+</div>
+{% endblock %}

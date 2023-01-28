@@ -1,8 +1,8 @@
 # Project name: BookStargram
 
-This is for practicing Django and Python.
+장고와 파이썬을 이용한 개인 프로젝트
 
-I implemented some basic functions in this program by using Django Web Framework
+장고 웹 프레임워크를 사용하여 아래의 기능들 개발
 
 1. Create Posts
 2. Read Posts
@@ -11,10 +11,7 @@ I implemented some basic functions in this program by using Django Web Framework
 5. Log in and Log out
 6. Sign up
 
-I made this program to Remember what you've read and Recommend the book to Others.
+파이썬, 장고의 학습을 위해 읽은 책을 기록하고 공유하는 간단한 웹사이트를 직접 개발해보기 위한 프로젝트
 
-But the codes are not properly organized in this program.
-
-So I'm going to update this program and make this code clean to maintain easily.
  
 
